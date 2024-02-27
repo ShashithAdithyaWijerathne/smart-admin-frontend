@@ -1,31 +1,120 @@
-import React from 'react';
-import './login.css'; // Import your CSS file for styling
+import React, { useState, useEffect } from 'react';
+import './login.css';
+import bcrypt from 'bcryptjs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validation for empty fields
+    if (!username || !password) {
+      setErrorMessage('Please enter both username and password.');
+      return;
+    }
+
+    // Hash the password securely before sending to backend
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      // Send username and hashed password to backend for authentication
+      // Replace this with your actual backend logic (e.g., using fetch or Axios)
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password: hashedPassword }),
+      });
+
+      if (response.ok) {
+        // Handle successful login (e.g., redirect to dashboard)
+        console.log('Login successful!');
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Invalid credentials.');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      setErrorMessage('An error occurred. Please try again later.');
+    }
+  };
+
+  // Clear error message on form change for better UX
+  useEffect(() => {
+    setErrorMessage('');
+  }, [username, password]);
+
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow-sm">
-        {/* Replace with your logo image */}
-        <img src="" alt="Company Logo" className="mb-3 mx-auto d-block" />
+        <div className="logo-container">
+          <img
+            src="http://52.220.31.220:8787/SmartAdmin/resources/images_sn/logo-login.png"
+            alt="Logo"
+            className="logo-image"
+          />
+        </div>
         <p className="text-center mb-4">Sign In to Continue</p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="username" className="form-label">Username:</label>
-            <input type="text" className="form-control" id="username" name="username" />
+            <label htmlFor="username" className="form-label">
+              Username:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password:</label>
-            <input type="password" className="form-control" id="password" name="password" />
+            <label htmlFor="password" className="form-label">
+              Password:
+            </label>
+            <div className="password-input-container">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                className="form-control"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="password-toggle-btn"
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </button>
+            </div>
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
           </div>
-          <button type="submit" className="btn btn-primary btn-block">Login</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Login
+          </button>
         </form>
         <div className="mt-4 text-center">
           <p>SasiaNet | Financial Suite</p>
-          <p className="text-muted">Powered By SasiaNet (Private) Limited.</p>
+          <p className="text-muted">Powered By SasiaNet (Private) Limited</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Login
