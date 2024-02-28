@@ -57,13 +57,12 @@ const Login = () => {
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow-sm">
-        <div className="logo-container">
-          <img
-            src="http://52.220.31.220:8787/SmartAdmin/resources/images_sn/logo-login.png"
-            alt="Logo"
-            className="logo-image"
-          />
-        </div>
+        <img
+          src="..." // Replace with your image source URL
+          alt="Logo"
+          className="logo-image"
+        />
+        <br/>
         <p className="text-center mb-4">Sign In to Continue</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
