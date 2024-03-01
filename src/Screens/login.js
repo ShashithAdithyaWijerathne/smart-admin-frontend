@@ -3,12 +3,14 @@ import './login.css';
 import bcrypt from 'bcryptjs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -23,33 +25,32 @@ const Login = () => {
       return;
     }
 
-    // Hash the password securely before sending to backend
+    // Hash the password securely before comparison
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
 
-      // Send username and hashed password to backend for authentication
-      // Replace this with your actual backend logic (e.g., using fetch or Axios)
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password: hashedPassword }),
-      });
+      // Simulate backend response (replace with actual API call)
+      const mockUsers = [
+        { username: 'Admin', password: '$2b$10$f1608u.9vU8.13u40w00eOBK9/t60/y29758s2K2a1y6459jK1Y' }, // Hashed "Admin@#123"
+      ];
 
-      if (response.ok) {
-        // Handle successful login (e.g., redirect to dashboard)
-        console.log('Login successful!');
+      const user = mockUsers.find(
+        (u) => u.username === username && bcrypt.compareSync(password, u.password)
+      );
+
+      if (user) {
+        // Handle successful login and store user information (replace with secure storage)
+        localStorage.setItem('user', JSON.stringify(user));
+        navigate('/main-dashboard'); // Redirect to main dashboard
       } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Invalid credentials.');
+        setErrorMessage('Invalid credentials.');
       }
     } catch (error) {
       console.error('Error during login:', error);
       setErrorMessage('An error occurred. Please try again later.');
     }
   };
-
-  // Clear error message on form change for better UX
   useEffect(() => {
     setErrorMessage('');
   }, [username, password]);
@@ -58,11 +59,11 @@ const Login = () => {
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow-sm">
         <img
-          src="..." // Replace with your image source URL
+          src="../Assests/Logos/logo-login.png"
           alt="Logo"
           className="logo-image"
         />
-        <br/>
+        <br />
         <p className="text-center mb-4">Sign In to Continue</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
