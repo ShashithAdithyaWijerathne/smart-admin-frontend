@@ -1,19 +1,25 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { useState, useEffect } from "react";
+import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
-function Dashboard() {
+function App() {
+  const [navHeight, setNavHeight] = useState(0); // State to store the height of the Navbar
+
+  // Effect to calculate and set the height of the Navbar when the component mounts
+  useEffect(() => {
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+      setNavHeight(navbar.offsetHeight);
+    }
+  }, []);
+
   return (
-    <>
+    <div>
       <Row>
         <Col xs lg="2" className="bg-light "></Col>
         <Col className="bg-light">
-          <Navbar expand="lg" className="bg-body-tertiary ">
+          <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
             <Container>
               <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -42,7 +48,8 @@ function Dashboard() {
           </Navbar>
         </Col>
       </Row>
-
+      {/* Placeholder for the Navbar to maintain the layout */}
+      <div style={{ height: navHeight }}></div>
       <Row>
         <Col xs lg="2">
           <div className="bg-light p-5">
@@ -62,16 +69,43 @@ function Dashboard() {
             initialView="dayGridMonth"
             height="600px"
           />
+          <p class="text-center">
+            I recollect that my first exploit in squirrel-shooting was in a
+            grove of tall walnut-trees that shades one side of the valley. I had
+            wandered into it at noontime, when all nature is peculiarly quiet,
+            and was startled by the roar of my own gun, as it broke the Sabbath
+            stillness around and was prolonged and reverberated by the angry
+          </p>
+          <p class="text-center">
+            I recollect that my first exploit in squirrel-shooting was in a
+            grove of tall walnut-trees that shades one side of the valley. I had
+            wandered into it at noontime, when all nature is peculiarly quiet,
+            and was startled by the roar of my own gun, as it broke the Sabbath
+            stillness around and was prolonged and reverberated by the angry
+          </p>
+          <p class="text-center">
+            I recollect that my first exploit in squirrel-shooting was in a
+            grove of tall walnut-trees that shades one side of the valley. I had
+            wandered into it at noontime, when all nature is peculiarly quiet,
+            and was startled by the roar of my own gun, as it broke the Sabbath
+            stillness around and was prolonged and reverberated by the angry
+          </p>
         </Col>
       </Row>
 
-      <Row>
-        <Col>1 of 3</Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
-      </Row>
-    </>
+      <footer className="footer">
+        <Container>
+          <Row>
+            <Col>
+              <p style={{ textAlign: "center" }}>
+                Copyright © {new Date().getFullYear()}
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
+    </div>
   );
 }
 
-export default Dashboard;
+export default App;
