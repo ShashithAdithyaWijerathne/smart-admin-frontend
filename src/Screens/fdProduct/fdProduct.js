@@ -10,7 +10,7 @@ import {
   FormLabel,
 } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import { DatePicker as BootstrapDatePicker } from 'react-bootstrap'; // Example alias
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 const FdProduct = () => {
@@ -50,6 +50,11 @@ const FdProduct = () => {
     // ...
     console.log('Form submitted:', productData); // Example logging
   };
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
 
   return (
     <Container>
@@ -82,24 +87,15 @@ const FdProduct = () => {
               </Col>
               <Col>
                 <Form.Label column>Start Date</Form.Label>
-                <DatePicker
-                  selected={productData.startDate}
-                  onChange={(date) => setProductData({ ...productData, startDate: date })}
-                />
-              </Col>
-            </Row>
-            <Row className="align-items-center"> {/* Ensure labels and inputs are aligned */}
-              <Col>
-                <Form.Label column>Start Date</Form.Label>
-                <DatePicker
-                  selected={productData.startDate}
-                  onChange={(date) => setProductData({ ...productData, startDate: date })}
-                />
+                <DatePicker selected={selectedDate} onChange={handleDateChange} dateFormat="MM/dd/yyyy" />
               </Col>
               <Col>
                 <Form.Label column>Description</Form.Label>
                 <Form.Control as="textarea" rows={3} placeholder="Enter Description" value={productData.description} onChange={(e) => setProductData({ ...productData, description: e.target.value })} />
               </Col>
+            </Row>
+            <Row className="align-items-center"> {/* Ensure labels and inputs are aligned */}
+              
             </Row>
           </Form>
         </Modal.Body>
