@@ -3,6 +3,7 @@ import './login.css';
 import bcrypt from 'bcryptjs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -17,19 +18,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation for empty fields
     if (!username || !password) {
       setErrorMessage('Please enter both username and password.');
       return;
     }
 
-    // Hash the password securely before sending to backend
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
 
-      // Send username and hashed password to backend for authentication
-      // Replace this with your actual backend logic (e.g., using fetch or Axios)
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -37,8 +34,12 @@ const Login = () => {
       });
 
       if (response.ok) {
-        // Handle successful login (e.g., redirect to dashboard)
+        // On successful login, handle logic based on your application structure
+        // (e.g., store tokens, redirect to dashboard, etc.)
         console.log('Login successful!');
+        // Replace with your desired behavior on successful login
+        // (e.g., set a flag for redirection or further processing)
+        // setLoggedIn(true); // Replace with your logic to mark user as logged in
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Invalid credentials.');
@@ -49,7 +50,6 @@ const Login = () => {
     }
   };
 
-  // Clear error message on form change for better UX
   useEffect(() => {
     setErrorMessage('');
   }, [username, password]);
@@ -58,11 +58,11 @@ const Login = () => {
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow-sm">
         <img
-          src="..." // Replace with your image source URL
+          src="../../Assests/Logos/logo-login.png"
           alt="Logo"
           className="logo-image"
         />
-        <br/>
+        <br />
         <p className="text-center mb-4">Sign In to Continue</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
