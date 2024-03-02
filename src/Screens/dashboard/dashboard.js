@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 import Calender from "./calender";
+import FdProduct from "../fdProduct/fdProduct";
 // import FullCalendar from "@fullcalendar/react";
 // import dayGridPlugin from "@fullcalendar/daygrid";
 
 function App() {
   const [navHeight, setNavHeight] = useState(0); // State to store the height of the Navbar
+  let location = useLocation();
+  const { pathname } = location;
+  const history = useNavigate();
 
   // Effect to calculate and set the height of the Navbar when the component mounts
   useEffect(() => {
@@ -68,8 +73,23 @@ function App() {
         <Col xs lg="2" style={{ position: "sticky", top: navHeight }}>
           <div className="bg-light p-5">
             <Nav defaultActiveKey="/home" className="flex-column">
-              <Nav.Link href="/home">Active</Nav.Link>
-              <Nav.Link eventKey="link-1">Link</Nav.Link>
+              <Nav.Link
+                href="/calender"
+                onClick={() => {
+                  history(`/calender`);
+                }}
+                eventKey={pathname === `/calender`}
+              >
+                Calender
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  history(`/fdProject`);
+                }}
+                eventKey={pathname === `/fdProject`}
+              >
+                FD Project
+              </Nav.Link>
               <Nav.Link eventKey="link-2">Link</Nav.Link>
               <Nav.Link eventKey="disabled" disabled>
                 Disabled
@@ -78,7 +98,9 @@ function App() {
           </div>
         </Col>
         <Col style={{ overflowY: "auto", maxHeight: "600px" }}>
-          <Calender />
+          {pathname === `/fdProject` && <FdProduct />}
+          {pathname === `/calender` && <Calender />}
+          {/* <Calender />
           <p class="text-center">
             I recollect that my first exploit in squirrel-shooting was in a
             grove of tall walnut-trees that shades one side of the valley. I had
@@ -99,7 +121,7 @@ function App() {
             wandered into it at noontime, when all nature is peculiarly quiet,
             and was startled by the roar of my own gun, as it broke the Sabbath
             stillness around and was prolonged and reverberated by the angry
-          </p>
+          </p> */}
         </Col>
       </Row>
 
