@@ -1,0 +1,127 @@
+/* General styles */
+body {
+  font-family: sans-serif;
+}
+
+/* Container */
+.container {
+  padding: 2rem;
+}
+
+/* Card */
+.card {
+  max-width: 400px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* Make the card a relative positioning container */
+}
+
+/* Logo container (using absolute positioning) */
+.logo-container {
+  position: absolute;
+  top: 100%; /* Position the logo below the top border of its container */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+}
+
+.logo-image {
+  width: 120px; /* Adjust the width as needed */
+  height: auto;
+}
+
+/* Styling cards with the 'card p-4 shadow-sm' combination */
+.card.p-4.shadow-sm {
+  border: 8px solid #009544; /* Replace with your desired border color */
+}
+
+
+/* Logo */
+.card img {
+  width: 120px;
+  height: auto;
+  margin: 0 auto; /* Center the logo horizontally */
+}
+
+/* Heading */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center; /* Center the heading text */
+}
+
+/* Form */
+form {
+  padding: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px; /* Adjust spacing as needed */
+}
+
+/* Input fields */
+.form-control {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  /* Adjust width and margin based on your preference */
+  width: 100%; /* Ensure width matches text fields */
+  margin-bottom: 1rem;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  font-size: 1em;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out,
+                border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-primary {
+  background-color: #009544 !important; /* Example: Green button */
+  border-color: #009544 !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: #006c30 !important; /* Darken on hover */
+  border-color: #006c30 !important;
+}
+
+/* Footer */
+.mt-4 {
+  margin-top: 2rem;
+  text-align: center; /* Center the footer text */
+}
+
+.text-muted {
+  color: #868e96;
+}
+
+/* Password input container */
+.password-input-container {
+  position: relative; /* Allows positioning of the eye icon */
+}
+
+/* Password toggle button */
+.password-toggle-btn {
+  position: absolute;
+  right: 10px; /* Adjust position as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none; /* Remove button background */
+  border: none; /* Remove button border */
+  padding: 0; /* Remove default button padding */
+  cursor: pointer;
+  color: #999; /* Adjust icon color as needed */
+}
