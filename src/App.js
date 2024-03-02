@@ -1,5 +1,6 @@
 import Login from "./Screens/login/login";
 import Dashboard from "./Screens/dashboard/dashboard";
+import FdProduct from "./Screens/fdProduct/fdProduct";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/fdProject" element={<FdProduct />} />
       </Routes>
     </BrowserRouter>
   );
