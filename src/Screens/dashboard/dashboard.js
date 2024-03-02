@@ -64,7 +64,7 @@ function App() {
       {/* Placeholder for the Navbar to maintain the layout */}
       <div style={{ height: navHeight }}></div>
       <Row>
-        <Col xs lg="2">
+        <Col xs lg="2" style={{ position: "sticky", top: navHeight }}>
           <div className="bg-light p-5">
             <Nav defaultActiveKey="/home" className="flex-column">
               <Nav.Link href="/home">Active</Nav.Link>
@@ -76,7 +76,7 @@ function App() {
             </Nav>
           </div>
         </Col>
-        <Col>
+        <Col style={{ overflowY: "auto", maxHeight: "600px" }}>
           <FullCalendar
             plugins={[dayGridPlugin]}
             initialView="dayGridMonth"
