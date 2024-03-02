@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
+import Calender from "./calender";
+// import FullCalendar from "@fullcalendar/react";
+// import dayGridPlugin from "@fullcalendar/daygrid";
 
 function App() {
   const [navHeight, setNavHeight] = useState(0); // State to store the height of the Navbar
@@ -77,11 +78,7 @@ function App() {
           </div>
         </Col>
         <Col style={{ overflowY: "auto", maxHeight: "600px" }}>
-          <FullCalendar
-            plugins={[dayGridPlugin]}
-            initialView="dayGridMonth"
-            height="600px"
-          />
+          <Calender />
           <p class="text-center">
             I recollect that my first exploit in squirrel-shooting was in a
             grove of tall walnut-trees that shades one side of the valley. I had
