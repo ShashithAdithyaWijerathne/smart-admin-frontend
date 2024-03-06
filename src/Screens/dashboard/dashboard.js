@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Calender from "./calender";
 import FdProduct from "../fdProduct/fdProduct";
 import "./dashboard.css";
+import { FaBook } from "react-icons/fa";
 // import FullCalendar from "@fullcalendar/react";
 // import dayGridPlugin from "@fullcalendar/daygrid";
 
@@ -37,29 +38,20 @@ function App() {
         <div class="row">
           <div class="bg-body-tertiary col-2"></div>
           <div class="col" style={{ padding: 0 }}>
-            <Navbar expand="lg" className="bg-body-tertiary">
-              <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar
+              expand="lg"
+              className="bg-body-tertiary"
+              style={{ border: "1px solid #ccc" }}
+            >
+              <Container style={{ paddingTop: "5px", paddingBottom: "5px" }}>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
+                    <Nav.Link href="#home">
+                      <FaBook style={{ marginRight: "5px" }} />
+                      <span className="nav-link-text">Home</span>
+                    </Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="#action/3.1">
-                        Action
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">
-                        Another action
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.3">
-                        Something
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action/3.4">
-                        Separated link
-                      </NavDropdown.Item>
-                    </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>
               </Container>
@@ -74,7 +66,10 @@ function App() {
         <Col xs lg="2" style={{ position: "fixed", top: `${navHeight}px` }}>
           <div
             className="bg-light p-5"
-            style={{ height: `calc(100vh - ${navHeight}px)` }}
+            style={{
+              height: `calc(94.9vh - ${navHeight}px)`,
+              border: "1px solid #ccc",
+            }}
           >
             <Nav defaultActiveKey="/home" className="flex-column">
               <Nav.Link
@@ -94,9 +89,13 @@ function App() {
               >
                 FD Project
               </Nav.Link>
-              <Nav.Link eventKey="link-2">Link</Nav.Link>
-              <Nav.Link eventKey="disabled" disabled>
-                Disabled
+              <Nav.Link
+                onClick={() => {
+                  history(`/user-creation`);
+                }}
+                eventKey={pathname === `/user-creation`}
+              >
+                User Creation
               </Nav.Link>
             </Nav>
           </div>
@@ -105,9 +104,10 @@ function App() {
         <Col
           style={{
             overflowY: "auto",
-            maxHeight: `calc(95vh - ${navHeight}px)`,
+            maxHeight: `calc(94.9vh - ${navHeight}px)`,
           }}
         >
+          {pathname === `/dashboard` && <Calender />}
           {pathname === `/fdProject` && <FdProduct />}
           {pathname === `/calender` && <Calender />}
         </Col>
@@ -118,7 +118,11 @@ function App() {
           <Row>
             <Col>
               <p
-                style={{ textAlign: "center", height: "5vh", marginBottom: 0 }}
+                style={{
+                  textAlign: "center",
+                  height: "5vh",
+                  marginBottom: 0,
+                }}
               >
                 Copyright © {new Date().getFullYear()}
               </p>
