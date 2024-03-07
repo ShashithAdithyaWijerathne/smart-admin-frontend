@@ -6,22 +6,29 @@ body {
 /* Container */
 .container {
   padding: 2rem;
+  width: 600vh; /* Set width equal to the viewport height */
+  height: 600vh; /* Set height equal to the viewport height */
 }
 
 /* Card */
 .card {
-  max-width: 400px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative; /* Make the card a relative positioning container */
+  width: 550px; /* Set width to 100% of the container */
+  height: 550px; /* Set height to 100% of the container */
 }
+
 
 /* Logo container (using absolute positioning) */
 .logo-container {
-  position: absolute;
-  top: 100%; /* Position the logo below the top border of its container */
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
+  width: 350px; /* Adjust the width as needed */
+  height: 100px; /*Adjust the height as needed  */
+  background-image: url('../../Assests/Logos/logo-login.png'); /* Replace with the path to your logo image */
+  background-size: contain; /* Scale the background image to contain within the container */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-position: center; /* Center the background image */
+  margin-left: 4.2vw;
 }
 
 .logo-image {
