@@ -57,13 +57,8 @@ const Login = () => {
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow-sm">
-        <img
-          src="../../Assests/Logos/logo-login.png"
-          alt="Logo"
-          className="logo-image"
-        />
-        <br />
-        <p className="text-center mb-4">Sign In to Continue</p>
+      <div className="logo-container"></div>
+        <p className="text-center " style={{"marginBottom" : 0}}>Sign In to Continue</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
