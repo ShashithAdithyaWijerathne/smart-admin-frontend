@@ -1,4 +1,4 @@
-.custom-container {
+/* .custom-container {
   background-color: lightgray;
 }
 div.row {
@@ -56,4 +56,26 @@ div.col-xs-8,
 div.col-xs-9 {
   padding-left: 0;
   padding-right: 0;
+} */
+:root {
+  --primary: #0091ff;
+  --dark: #061b28;
+  --gray: #756388;
+  --light: #ffffff;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+img {
+  box-sizing: content-box; /* Override box-sizing for images */
 }
