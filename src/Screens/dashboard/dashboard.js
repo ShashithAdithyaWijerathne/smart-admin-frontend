@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import Calender from "./calender";
 import FdProduct from "../fdProduct/fdProduct";
+import Users from "../Users/users";
 import "./dashboard.css";
 import { FaBook } from "react-icons/fa";
-// import FullCalendar from "@fullcalendar/react";
-// import dayGridPlugin from "@fullcalendar/daygrid";
 
 function App() {
   const [navHeight, setNavHeight] = useState(0); // State to store the height of the Navbar
@@ -71,13 +70,12 @@ function App() {
               border: "1px solid #ccc",
             }}
           >
-            <Nav defaultActiveKey="/home" className="flex-column">
+            <Nav defaultActiveKey="/dashboard" className="flex-column">
               <Nav.Link
-                href="/calender"
                 onClick={() => {
-                  history(`/calender`);
+                  history(`/dashboard`);
                 }}
-                eventKey={pathname === `/calender`}
+                eventKey={pathname === `/dashboard`}
               >
                 Calender
               </Nav.Link>
@@ -91,9 +89,9 @@ function App() {
               </Nav.Link>
               <Nav.Link
                 onClick={() => {
-                  history(`/user-creation`);
+                  history(`/users`);
                 }}
-                eventKey={pathname === `/user-creation`}
+                eventKey={pathname === `/users`}
               >
                 User Creation
               </Nav.Link>
@@ -109,11 +107,15 @@ function App() {
         >
           {pathname === `/dashboard` && <Calender />}
           {pathname === `/fdProject` && <FdProduct />}
-          {pathname === `/calender` && <Calender />}
+
+          {pathname === `/users` && <Users />}
         </Col>
       </Row>
 
-      <footer className="footer ">
+      <footer
+        className="footer"
+        style={{ position: "fixed", bottom: 0, width: "100%" }}
+      >
         <Container className="footer-container">
           <Row>
             <Col>
