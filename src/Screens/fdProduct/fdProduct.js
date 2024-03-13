@@ -14,6 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import * as jsPDF from "jspdf";
 import "jspdf-autotable";
+import './fdProduct.css';
 
 const FdProduct = () => {
   const [showNewFdModal, setShowNewFdModal] = useState(false);
@@ -156,8 +157,8 @@ const FdProduct = () => {
           ))}
         </tbody>
       </Table>
-
-      <Modal show={showNewFdModal} onHide={handleCloseNewFdModal}>
+            <div style={{width : "90vw", marginLeft:"-10vw"}}>
+            <Modal show={showNewFdModal} onHide={handleCloseNewFdModal} ClassName="custom-modal-dialog" >
         <Modal.Header closeButton>
           <Modal.Title>Create New Fixed Deposit Product</Modal.Title>
         </Modal.Header>
@@ -233,6 +234,8 @@ const FdProduct = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+            </div>
+     
 
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
         {/* Add modal content for edit */}
