@@ -1,4 +1,4 @@
-/* .custom-container {
+.custom-container {
   background-color: lightgray;
 }
 div.row {
@@ -56,7 +56,7 @@ div.col-xs-8,
 div.col-xs-9 {
   padding-left: 0;
   padding-right: 0;
-} */
+}
 :root {
   --primary: #0091ff;
   --dark: #061b28;

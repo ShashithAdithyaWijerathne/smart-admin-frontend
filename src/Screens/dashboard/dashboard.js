@@ -34,9 +34,9 @@ function App() {
           padding: 0,
         }}
       >
-        <div class="row">
-          <div class="bg-body-tertiary col-2"></div>
-          <div class="col" style={{ padding: 0 }}>
+        <div className="row">
+          <div className="bg-body-tertiary col-2"></div>
+          <div className="col" style={{ padding: 0 }}>
             <Navbar
               expand="lg"
               className="bg-body-tertiary"

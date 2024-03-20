@@ -1,14 +1,14 @@
-/* General styles */
+/* General styles  */
 body {
   font-family: sans-serif;
 }
 
 /* Container */
-.container {
+/* .container {
   padding: 2rem;
-  width: 600vh; /* Set width equal to the viewport height */
-  height: 600vh; /* Set height equal to the viewport height */
-}
+  width: 600vh;
+  height: 600vh;
+} */
 
 /* Card */
 .card {
@@ -19,12 +19,11 @@ body {
   height: 550px; /* Set height to 100% of the container */
 }
 
-
 /* Logo container (using absolute positioning) */
 .logo-container {
   width: 350px; /* Adjust the width as needed */
   height: 100px; /*Adjust the height as needed  */
-  background-image: url('../../Assests/Logos/logo-login.png'); /* Replace with the path to your logo image */
+  background-image: url("../../Assests/Logos/logo-login.png"); /* Replace with the path to your logo image */
   background-size: contain; /* Scale the background image to contain within the container */
   background-repeat: no-repeat; /* Prevent the background image from repeating */
   background-position: center; /* Center the background image */
@@ -40,7 +39,6 @@ body {
 .card.p-4.shadow-sm {
   border: 8px solid #009544; /* Replace with your desired border color */
 }
-
 
 /* Logo */
 .card img {
@@ -87,11 +85,11 @@ form {
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1em;
-  border-radius: .25rem;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out,
-                border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-primary {
