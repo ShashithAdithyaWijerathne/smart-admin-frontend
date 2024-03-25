@@ -8,8 +8,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/fdProject" element={<Dashboard />} />
-        <Route path="/users" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
